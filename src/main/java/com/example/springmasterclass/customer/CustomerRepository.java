@@ -6,6 +6,7 @@ public class CustomerRepository implements CustomerRepo {
     @Override
     public List<Customer> getCustomers() {
         return List.of(new Customer(1L,
-            "Connect to real db"));
+            "Connect to real db",
+            "todo"));
     }
 }
