@@ -7,6 +7,7 @@ public class CustomerFakeRepository implements CustomerRepo {
     public List<Customer> getCustomers() {
         return List.of(new Customer(1L,
             "Shazeen",
-            "flowers15"));
+            "flowers15",
+            "email@gmail.com"));
     }
 }

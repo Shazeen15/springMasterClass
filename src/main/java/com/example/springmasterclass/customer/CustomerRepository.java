@@ -7,6 +7,7 @@ public class CustomerRepository implements CustomerRepo {
     public List<Customer> getCustomers() {
         return List.of(new Customer(1L,
             "Connect to real db",
-            "todo"));
+            "todo",
+            "email@gmail.com"));
     }
 }
