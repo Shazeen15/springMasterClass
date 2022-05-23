@@ -18,15 +18,15 @@ public class Customer {
     @JsonProperty("customerId")
     private final Long id;
 
-    @NotBlank
+    @NotBlank(message = "provide name")
     private final String name;
 
-    @NotBlank
+    @NotBlank(message = "provide password")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private final String password;
 
-    @NotBlank
-    @Email
+    @NotBlank(message = "provide email")
+    @Email(message = "provide proper email")
     private final String email;
 
     @JsonIgnore
