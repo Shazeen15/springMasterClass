@@ -2,32 +2,36 @@ package com.example.springmasterclass.customer;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
+@Entity
+@Table
+@NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @ToString
 public class Customer {
-    @JsonProperty("customerId")
-    private final Long id;
+    @Id
+    @JsonProperty("customer_id")
+    private Long id;
 
     @NotBlank(message = "provide name")
-    private final String name;
+    private String name;
 
     @NotBlank(message = "provide password")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private final String password;
+    private String password;
 
     @NotBlank(message = "provide email")
     @Email(message = "provide proper email")
-    private final String email;
+    private String email;
 
     @JsonIgnore
     public String getPassword() {

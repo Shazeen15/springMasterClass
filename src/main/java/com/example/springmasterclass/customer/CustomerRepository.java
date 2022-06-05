@@ -1,13 +1,7 @@
 package com.example.springmasterclass.customer;
 
-import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public class CustomerRepository implements CustomerRepo {
-    @Override
-    public List<Customer> getCustomers() {
-        return List.of(new Customer(1L,
-            "Connect to real db",
-            "todo",
-            "email@gmail.com"));
-    }
+public interface CustomerRepository extends JpaRepository<Customer, Long> {
+
 }

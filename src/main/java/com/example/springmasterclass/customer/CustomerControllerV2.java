@@ -1,5 +1,6 @@
 package com.example.springmasterclass.customer;
 
+import com.example.springmasterclass.exception.ApiRequestException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -26,14 +27,19 @@ public class CustomerControllerV2 {
         return customerService.getCustomerById(customerId);
     }
 
+    @GetMapping(path = "{customerId}/exception")
+    Customer getCustomerException(
+        @PathVariable("customerId")
+            Long customerId) {
+        throw new ApiRequestException("api request exception for customer " + customerId);
+    }
 
     @PostMapping
     void addCustomer(
         @Valid
         @RequestBody
             Customer customer) {
-        System.out.println(customer);
-        customerService.addCustomer();
+        customerService.addCustomer(customer);
     }
 
     @PutMapping

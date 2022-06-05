@@ -1,22 +1,24 @@
 package com.example.springmasterclass.customer;
 
+import com.example.springmasterclass.exception.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class CustomerService {
-    private final CustomerRepo customerRepo;
+    private final CustomerRepository customerRepository;
 
-    public CustomerService(CustomerRepo customerRepo) {
-        this.customerRepo = customerRepo;
+    public CustomerService(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
     }
 
     List<Customer> getCustomers() {
-        return customerRepo.getCustomers();
+        return customerRepository.findAll();
     }
 
-    public void addCustomer() {
+    public void addCustomer(Customer customer) {
+        System.out.println(customer);
         System.out.println("customer added with post request");
     }
 
@@ -33,7 +35,7 @@ public class CustomerService {
             .filter(customer -> customer.getId()
                 .equals(customerId))
             .findFirst()
-            .orElseThrow(() -> new IllegalStateException("customer not found"));
+            .orElseThrow(() -> new NotFoundException("customer with id " + customerId + " not found"));
     }
 
 }

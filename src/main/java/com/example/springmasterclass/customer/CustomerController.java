@@ -22,7 +22,7 @@ public class CustomerController {
     void addCustomer(
         @RequestBody
             Customer customer) {
-        customerService.addCustomer();
+        customerService.addCustomer(customer);
     }
 
     @PutMapping
